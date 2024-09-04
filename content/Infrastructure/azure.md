@@ -89,7 +89,7 @@ README  cert.pem  chain.pem  fullchain.pem  privkey.pem
 
 The certificate, chain, and key are issued in .pem format. To upload the certificate in .pfx, use OpenSSL to convert from PEM to PFX:
 
-`sudo openssl pkcs12 -export -in /etc/letsencrypt/live/<domain>/fullchain.pem -inkey /etc/letsencrypt/live/<domain>/privkey.pem -out <domain>.pfx`
+`sudo openssl pkcs12 -inkey /etc/letsencrypt/live/<domain>/privkey.pem -in /etc/letsencrypt/live/<domain>/cert.pem -certfile /etc/letsencrypt/live/<domain>/chain.pem -export -out <domain>.pfx`
 
 Finally, modify the current HTTPS listener to use the Let's Encrypt certificate.
 ![11](/images/ssl-autorenew-images/1190c74b-d5e9-4637-86c5-2d85c5959e83.png)
